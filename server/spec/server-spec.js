@@ -14,6 +14,12 @@ describe('Persistent Node Chat Server', function() {
       password: 'student',
       database: 'chat'
     });
+
+    // user: 'root',
+    // password: 170170,
+    // database: 'chat'
+
+
     dbConnection.connect();
 
     var tablename = 'messages';
