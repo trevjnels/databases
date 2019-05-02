@@ -8,15 +8,17 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host: 'chat',
   user: 'root'
-})
+});
 
-connection.connect(function(err){
+connection.connect(function(err) {
   if (err) {
     console.log('error connectiong: ' + err.stack);
-     return; 
   }
-  console.log('connected as id ' + connection.threadId);
 });
+
+module.exports = connection;
+
+
 
 
 
@@ -26,6 +28,7 @@ connection.connect(function(err){
 //   database: 'chat'
 // });
 // dbConnection.connect();
+
 
 
 // var tablename = 'messages';

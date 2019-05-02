@@ -1,9 +1,14 @@
+var db = require('../db');
+
+
 
 module.exports = {
   messages: {
     get: function (messages) {
+      db.query('SELECT * FROM messages', (err, results, fields){
+        
 
-
+      })
     }, // a function which produces all the messages
     post: function (message) {
 
