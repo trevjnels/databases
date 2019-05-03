@@ -11,8 +11,14 @@ module.exports = {
     post: function (message, id = -1) {
       id = id + 1;
       var { username, message, roomname } = message;
+      console.log('username', username);
+      
+      console.log('message)', message);
+      
+      console.log('roomname', roomname);
+      
       var content = message;
-      return db.query(`INSERT INTO messages (id, content, username, roomname) values("${id}", "${content}", "${username}", "${roomname}" );`, (err, results, fields) => {
+      db.query(`INSERT INTO messages (id, content, username, roomname) VALUES ("${id}", "${content}", "${username}", "${roomname}" );`, (err, results, fields) => {
         if (err) {
           console.log(err);
         }
@@ -35,7 +41,7 @@ module.exports = {
       console.log('- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ', user);
       var { username } = user;
       id = id + 1;
-      return db.query(`INSERT INTO users (id, username, roomname) values('${id}', '${username}', 'newYork' );`, (err, results, fields) => {
+      db.query(`INSERT INTO users (id, username, roomname) values('${id}', '${username}', 'newYork' );`, (err, results, fields) => {
         return results;
       
       });
