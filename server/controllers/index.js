@@ -15,10 +15,16 @@ module.exports = {
       console.log('_*_*_*_*_*_*_**_*_*_*_*');
       console.log(req.body);
       console.log('_*_*_*_*_*_*_**_*_*_*_*');
-      models.messages.post(req.body);
-      res.status(200).send(req.body);
+      models.messages.post(req.body, (err, response) => {
+        if (err) {
+          console.log(err);
+          res.sendStatus(404);
+        }
+        res.sendStatus(201);
+      });
+     
     } // a function which handles posting a message to the database
-   
+    //schema to auto increment. repeat pattern on al controllers; 
   },
   
   users: {
@@ -26,14 +32,14 @@ module.exports = {
     get: function (req, res) {},
  
     post: function (req, res) {
-      if (req.body.user === undefined) {
-        res.status(404).end();
+      if (req.body.username === undefined) {
+        res.sendStatus(404);
       }
       console.log('* * * * * * * * * * * * * * * ');
       console.log(req.body);
       console.log('* * * * * * * * * * * * * * * ');
       models.users.post(req.body);
-      res.status(200).end('Adding user ', req.body);
+      res.sendStatus(201);
     } 
   }
 };

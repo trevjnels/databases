@@ -6,9 +6,9 @@ USE chat;
   --         message: 'In mercy\'s name, three days is all I need.',
   --         roomname: 'Hello'
 
-CREATE TABLE messages ( id INT PRIMARY KEY, content TEXT, username TEXT, roomname TEXT);
-  /* Describe your table here.*/
-  
+CREATE TABLE messages ( id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, content TEXT, username TEXT, roomname TEXT);
+  /* Describe your table here.*
+  autoincrement
 
 -- createdAt: "2019-05-02T21:08:12.808Z"
 -- objectId: "VPP7mE8qDd"

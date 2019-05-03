@@ -8,17 +8,16 @@ module.exports = {
 
       // });
     }, // a function which produces all the messages
-    post: function (message, id = -1) {
-      id = id + 1;
+    post: function (message, callback) {
       var { username, message, roomname } = message;
       console.log('username', username);
-      
+
       console.log('message)', message);
-      
+
       console.log('roomname', roomname);
-      
+
       var content = message;
-      db.query(`INSERT INTO messages (id, content, username, roomname) VALUES ("${id}", "${content}", "${username}", "${roomname}" );`, (err, results, fields) => {
+      db.query('INSERT INTO messages (content, username, roomname) VALUES (?, ?, ? )', [ content, username, roomname], (err, results, fields) => {
         if (err) {
           console.log(err);
         }
