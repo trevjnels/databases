@@ -5,20 +5,24 @@ var db = require('../db');
 module.exports = {
   messages: {
     get: function (messages) {
-      // db.query('SELECT * FROM messages', (err, results, fields) => {
-      //   if (err) {
-      //   //    console.log(err);
-      //   // }
-      //   // console.log('* * * * * * * * * * * * * * * ')
-      //   // console.log(results)
-      //   // console.log('* * * * * * * * * * * * * * * ')
-        
+
       // });
     }, // a function which produces all the messages
-    post: function (message) {
-      
+    post: function (message, id = -1) {
+      id = id + 1;
+      var { username, message, roomname } = message;
+      var content = message;
+      return db.query(`INSERT INTO messages (id, content, username, roomname) values("${id}", "${content}", "${username}", "${roomname}" );`, (err, results, fields) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log('RECEIVED MESSAGE POST IN MoDELS');
+        return results;
+       
+      });
+    }
 
-    } // a function which can be used to insert a message into the database
+    // a function which can be used to insert a message into the database
   },
   users: {
     // Ditto as above.
@@ -27,17 +31,14 @@ module.exports = {
 
 
     },
-    post: function (user) {
-      db.query(`INSERT INTO users SET  id=${id}, username='${user}`, (err, results, fields) => {
-        console.log('****************');
-        console.log(results)
-        console.log('****************');
-
+    post: function (user, id = -1) {
+      console.log('- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ', user);
+      var { username } = user;
+      id = id + 1;
+      return db.query(`INSERT INTO users (id, username, roomname) values('${id}', '${username}', 'newYork' );`, (err, results, fields) => {
+        return results;
+      
       });
-      
-      
-
-    
     }
   }
 };

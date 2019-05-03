@@ -6,13 +6,14 @@ var mysql = require('mysql');
 
 
 var connection = mysql.createConnection({
-  host: 'chat',
-  user: 'root'
+  database: 'chat',
+  user: 'root',
+  password: ''
 });
 
 connection.connect(function(err) {
   if (err) {
-    console.log('error connectiong: ' + err.stack);
+    console.log('error connection: ' + err.stack);
   }
 });
 
@@ -22,16 +23,10 @@ module.exports = connection;
 
 
 
-// dbConnection = mysql.createConnection({
-//   user: 'student',
-//   password: 'student',
-//   database: 'chat'
-// });
-// dbConnection.connect();
 
 
 
-// var tablename = 'messages';
+var tablename = 'messages';
 
 // /* Empty the db table before each test so that multiple tests
 //  * (or repeated runs of the tests) won't screw each other up: */

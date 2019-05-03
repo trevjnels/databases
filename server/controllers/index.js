@@ -8,14 +8,33 @@ module.exports = {
       // 
       
     }, // a function which handles a get request for all messages
-    post: function (req, res) {} // a function which handles posting a message to the database
+    post: function (req, res) {
+      if (req.body.message === undefined ) {
+        res.status(404).end();
+      }
+      console.log('_*_*_*_*_*_*_**_*_*_*_*');
+      console.log(req.body);
+      console.log('_*_*_*_*_*_*_**_*_*_*_*');
+      models.messages.post(req.body);
+      res.status(200).send(req.body);
+    } // a function which handles posting a message to the database
+   
   },
- 
   
   users: {
     // Ditto as above
     get: function (req, res) {},
-    post: function (req, res) {}
+ 
+    post: function (req, res) {
+      if (req.body.user === undefined) {
+        res.status(404).end();
+      }
+      console.log('* * * * * * * * * * * * * * * ');
+      console.log(req.body);
+      console.log('* * * * * * * * * * * * * * * ');
+      models.users.post(req.body);
+      res.status(200).end('Adding user ', req.body);
+    } 
   }
 };
 
