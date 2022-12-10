@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "body-parser": "^1.9.2",
-    "express": "^4.10.1",
+    "express": "^4.17.3",
     "homebrew": "^0.1.0",
     "morgan": "^1.4.1",
     "mysql": "^2.4.2",
